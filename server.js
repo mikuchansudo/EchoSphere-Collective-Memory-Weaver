@@ -4,18 +4,17 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://<your-mongo-url>', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log('MongoDB connected'))
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('MongoDB connected');
+        console.log('Environment check:', process.env.MONGODB_URI);
+    })
     .catch(err => console.log('MongoDB connection error:', err));
 
 // Memory Schema
@@ -28,7 +27,7 @@ const Memory = mongoose.model('Memory', memorySchema);
 // Routes
 app.get('/memories', async (req, res) => {
     try {
-        const memories = await Memory.find().sort({ createdAt: -1 });
+        const memories = await Memory.find();
         res.json(memories);
     } catch (err) {
         res.status(500).json({ error: 'Server error' });
@@ -45,7 +44,6 @@ app.post('/memories', async (req, res) => {
     }
 });
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
