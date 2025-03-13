@@ -1,0 +1,17 @@
+{
+    "name": "echosphere-web",
+    "version": "1.0.0",
+    "description": "EchoSphere Memory Sharing Web App",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.3",
+        "express": "^4.21.2",
+        "mongoose": "^5.13.23"
+    },
+    "engines": {
+  "node": ">=14.0.0"
+}
+}
