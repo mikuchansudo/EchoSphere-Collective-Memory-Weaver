@@ -4,14 +4,14 @@
     "description": "EchoSphere Memory Sharing Web App",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+      "start": "node server.js"
     },
     "dependencies": {
-        "body-parser": "^1.20.3",
-        "express": "^4.21.2",
-        "mongoose": "^5.13.23"
+      "express": "^4.17.1",
+      "mongoose": "^5.10.9",
+      "body-parser": "^1.19.0"
     },
     "engines": {
-  "node": ">=14.0.0"
-}
-}
+      "node": ">=14.0.0"
+    }
+  }
