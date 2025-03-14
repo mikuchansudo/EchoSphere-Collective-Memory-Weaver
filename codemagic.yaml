@@ -2,18 +2,24 @@ workflows:
   android-build:
     name: Android Build for F-Droid
     max_build_duration: 30
+    instance_type: linux
     environment:
-      flutter: stable  # Uses latest stable Flutter (e.g., 3.19.x as of 2025)
-      android_signing:
-        - keystore_reference
+      flutter: stable
+      groups:
+        - android-signing  # Links to your Codemagic group
+      vars:
+        ANDROID_KEYSTORE_PASSWORD: "Echo1234!"
+        ANDROID_KEYSTORE_ALIAS: "upload"
+        ANDROID_KEYSTORE_KEY_PASSWORD: "Echo1234!"
     scripts:
-      - name: Get Flutter dependencies
-        script: flutter pub get
-      - name: Build APK
-        script: flutter build apk --release
+      - name: Decode Keystore
+        script: |
+          echo "$ANDROID_KEYSTORE" | base64 -d > keystore.jks
+      - flutter pub get
+      - flutter build apk --release --keystore-path keystore.jks --keystore-password "$ANDROID_KEYSTORE_PASSWORD" --keystore-key-alias "$ANDROID_KEYSTORE_ALIAS" --keystore-key-password "$ANDROID_KEYSTORE_KEY_PASSWORD"
     artifacts:
       - build/**/outputs/**/*.apk
     publishing:
       email:
         recipients:
-          - mikuchan@example.com
+          - mikuchan111000@gmail.com  # Your email
