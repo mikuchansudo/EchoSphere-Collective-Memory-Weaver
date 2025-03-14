@@ -2,7 +2,7 @@ workflows:
   android-build:
     name: Android Build for F-Droid
     max_build_duration: 30
-    working_directory: mobile-app  # Run all scripts in mobile-app/
+    working_directory: mobile-app
     environment:
       flutter: stable
       groups:
@@ -12,6 +12,9 @@ workflows:
         ANDROID_KEYSTORE_ALIAS: "upload"
         ANDROID_KEYSTORE_KEY_PASSWORD: "Echo1234!"
     scripts:
+      - name: Debug Keystore Variable
+        script: |
+          echo "ANDROID_KEYSTORE is: $ANDROID_KEYSTORE"
       - name: Decode Keystore
         script: |
           echo "$ANDROID_KEYSTORE" | base64 -d > keystore.jks
@@ -29,7 +32,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - mikuchan@example.com  # Replace with your email
-        notify:
-          success: true
-          failure: true
+          - mikuchan@example.com
