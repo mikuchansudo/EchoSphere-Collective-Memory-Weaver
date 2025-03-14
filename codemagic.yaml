@@ -2,7 +2,7 @@ workflows:
   android-build:
     name: Android Build for F-Droid
     max_build_duration: 30
-    instance_type: linux
+    # Removed instance_type: linux - defaults to free-tier instance
     environment:
       flutter: stable
       groups:
@@ -15,11 +15,21 @@ workflows:
       - name: Decode Keystore
         script: |
           echo "$ANDROID_KEYSTORE" | base64 -d > keystore.jks
-      - flutter pub get
-      - flutter build apk --release --keystore-path keystore.jks --keystore-password "$ANDROID_KEYSTORE_PASSWORD" --keystore-key-alias "$ANDROID_KEYSTORE_ALIAS" --keystore-key-password "$ANDROID_KEYSTORE_KEY_PASSWORD"
+      - name: Get Flutter Dependencies
+        script: flutter pub get
+      - name: Build Signed APK
+        script: |
+          flutter build apk --release \
+            --keystore-path keystore.jks \
+            --keystore-password "$ANDROID_KEYSTORE_PASSWORD" \
+            --keystore-key-alias "$ANDROID_KEYSTORE_ALIAS" \
+            --keystore-key-password "$ANDROID_KEYSTORE_KEY_PASSWORD"
     artifacts:
       - build/**/outputs/**/*.apk
     publishing:
       email:
         recipients:
-          - mikuchan111000@gmail.com  # Your email
+          - mikuchan@example.com  # Replace with your email
+        notify:
+          success: true
+          failure: true
