@@ -12,9 +12,18 @@ workflows:
         ANDROID_KEYSTORE_ALIAS: "upload"
         ANDROID_KEYSTORE_KEY_PASSWORD: "Echo1234!"
     scripts:
-      - name: Debug Keystore Variable
+      - name: Debug Environment
         script: |
-          echo "ANDROID_KEYSTORE is: $ANDROID_KEYSTORE"
+          #!/bin/bash
+          set -x  # Print commands as they run
+          echo "Starting debug..."
+          if [ -z "$ANDROID_KEYSTORE" ]; then
+            echo "ERROR: ANDROID_KEYSTORE is empty or unset"
+            exit 1
+          else
+            echo "ANDROID_KEYSTORE length: ${#ANDROID_KEYSTORE}"
+            echo "ANDROID_KEYSTORE starts with: ${ANDROID_KEYSTORE:0:10}"
+          fi
       - name: Decode Keystore
         script: |
           echo "$ANDROID_KEYSTORE" | base64 -d > keystore.jks
@@ -29,7 +38,3 @@ workflows:
             --keystore-key-password "$ANDROID_KEYSTORE_KEY_PASSWORD"
     artifacts:
       - build/**/outputs/**/*.apk
-    publishing:
-      email:
-        recipients:
-          - mikuchan@example.com
