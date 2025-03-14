@@ -15,15 +15,12 @@ workflows:
       - name: Debug Environment
         script: |
           #!/bin/bash
-          set -x  # Print commands as they run
-          echo "Starting debug..."
+          echo "ANDROID_KEYSTORE is set to: ${ANDROID_KEYSTORE:-unset}"
           if [ -z "$ANDROID_KEYSTORE" ]; then
             echo "ERROR: ANDROID_KEYSTORE is empty or unset"
             exit 1
-          else
-            echo "ANDROID_KEYSTORE length: ${#ANDROID_KEYSTORE}"
-            echo "ANDROID_KEYSTORE starts with: ${ANDROID_KEYSTORE:0:10}"
           fi
+          echo "Variable confirmed, proceeding..."
       - name: Decode Keystore
         script: |
           echo "$ANDROID_KEYSTORE" | base64 -d > keystore.jks
