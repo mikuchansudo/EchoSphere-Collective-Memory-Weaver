@@ -5,9 +5,56 @@ workflows:
     working_directory: mobile-app
     environment:
       flutter: stable
-      groups:
-        - android-signing
       vars:
+        ANDROID_KEYSTORE: "MIIKtAIBAzCCCl4GCSqGSIb3DQEHAaCCCk8EggpLMIIKRzCCBa4GCSqGSIb3DQEHAaCCBZ8EggWb
+                          MIIFlzCCBZMGCyqGSIb3DQEMCgECoIIFQDCCBTwwZgYJKoZIhvcNAQUNMFkwOAYJKoZIhvcNAQUM
+                          MCsEFI2lahTIioGRq8IPNRJry18u+rjGAgInEAIBIDAMBggqhkiG9w0CCQUAMB0GCWCGSAFlAwQB
+                          KgQQK2AvFYqheJr2Df9pH5w5KgSCBNBOWOuryKVPx97kugyIuGrER43ceJJJENbg+X+KhBOZSAnF
+                          KW1m8/KiA/qjsQDyVkqr2oF4/a0tYkXULmjGIVBn/6njOSqq1O8E14NeYB7WM1dXub6vtoPCK2+4
+                          WcbD1XBlqbiKAAWHo6cfUDxywmPkL30WZ8t7NYqd63yy4+JNy944tFLTo87nWyEaZPvOgyBYf8Gi
+                          OKjJU686LHLDuh7BdmlJ5swV7/Vfij0Z1x5FS0YbqGTfKLq5T90JA2l7bRF9zd3d2aWjz04cFLxt
+                          TVKiv7LdedMSlxU4N6psInk1CPBXPaGnuGwoptyu6mYXX++GoBmBLw9jsdpQrhUN1K+Fb13PJeMk
+                          nhODdamMGZQkp62KSKI0yz1Tu+LQiKe4AfIxdkx2/THjyLVxGTux4nVu8arkC285zcuAlmHlNpRr
+                          0fuwpOK4P2eD4LEqhAcwqQoCY4McJhKF+HH/eeH7y4rT0dSS0UE9PI5dk5JKbMdxMN0+u5acMm7E
+                          tQHIVnDa5frHW8S5e6ktZ7yuKFwi6ih94JevGc0Sq2Asu3IvS/pDNRnuNv48WXmN5DQ03XEAS5sk
+                          93YdY8myTQTe74AU2Bkwoyw1JZlNUrgstjsh+kNTlqJWW2I4cVe8p1o9Vwvua4Zkw9LPFZToqnIt
+                          cmqowJgPQk7MabaFQRZZ3/Ctj3Uwf0YpVTpsg1Pei/yUWfkGN3aLxH24AyZRUuoF09jB4vLAWkZc
+                          0SvriJ1DrmIklvUcFZtoCJYvcpAkCFbFGAwpJMXYoEPbHM/OC8kPbiuoGK17ClFN8xqxxczlMBoI
+                          xa4kaBSie4+91mU81bUROa9rPuiUnPb1X8V1Z68J0vOt7AtUaAIpstbRJxu0asH8eBrL4BwYndv/
+                          PrjuemWQ3a2MmgJwxEB27rAH0ffDb92QpoCHGsjnGOsyFbwMnsmZEYsQVf9ny8T/mGZEyw+9lhx2
+                          afVIgcoqfu4baZ3LQDlWir0+m25vNfyJR1Bsju2BJS2z1z0yGYp0vxUYKywVq/0T2+KHBUg6urAK
+                          GPWbbhbZAi2TFHh2rjYwS2hsvq+ivW2i1qbYuvgoUoH4044OCPFHixLRkT4MiuwiDmUJoiT2dJjG
+                          JDiRo3y2oASeU77v6d0tGH4djDgbfZbGbEvDbIFtUn/E5tWDm6eJWOE5MP+G+IYIFI3BE1UsmN0Y
+                          WNPOUBa/I6TEuNEkBcF3uNiN5Y1G47Mwr04H9Hp9UVUTR9ZdIOcTjOk3pos83iScZINoslertVjI
+                          3a+kyvR/T7K4hd/Fz5fzyXZKyoDYqerj96obYun5w7QWkLgewq4ozHnMBn8xV8KtIBXZQWFPH7b7
+                          Cfqk+6850mb4ssnjNAwo7jLKVkHc6JAP6hh4SiEPG4FP8K3EFizLqd2oHR8KRwsZqLZgTWLvQiwc
+                          3trhXr2vSWV4z44jXOFzpbDxBN/YLLj2/wTMF9tPnjCBv5HXeWH8kQRUL1wai2LplZLFslx1YGGE
+                          v9Z8Dll6/e1omP4+MXvXDZx1a2Kxpww46tt5zxj5oWMem3v5roxCRJ27FP8C88yC5GnvVabCJl+R
+                          nAZgwgDAzNR64GPEgpqHzqiMTkfAniX+oX/HLI8dafMsCxNUt8G4ZadrO19LztNMF/HV3CeZ8tgs
+                          TjFAMBsGCSqGSIb3DQEJFDEOHgwAdQBwAGwAbwBhAGQwIQYJKoZIhvcNAQkVMRQEElRpbWUgMTc0
+                          MTg2MDE3MjU1NjCCBJEGCSqGSIb3DQEHBqCCBIIwggR+AgEAMIIEdwYJKoZIhvcNAQcBMGYGCSqG
+                          SIb3DQEFDTBZMDgGCSqGSIb3DQEFDDArBBRlzLGUV90PnKtt6LX9Awh+PbNyoQICJxACASAwDAYI
+                          KoZIhvcNAgkFADAdBglghkgBZQMEASoEEKHoxTMGA4jmtg/cMsenSC+AggQAx0C0dRKjpjeZgnDb
+                          etqqvXu/aSxGnJJlcnNhdJdmtWeCRgOHoNR+DMjaHgkqhKbipM5A2lf3yFNHIToppW8Bjs9BrKvS
+                          KU2gI/rHv7Nwzfxsywoefqewpu2dRSWK6JYP+7PLN48A00ps5N3e7jCJ46AclCio+m16QQaZKj4A
+                          QTq53vNNmXXSEolLp57OYt/MwmFDDuw1lgC00uQnw/DtIkj4RzM9zC9VWzZFmQueuq7ivwc7rPwU
+                          FfVJWqYTuzU7g7gcoRdsBbbQWoUImN5p1L6+0DLrb3wBQSga71/ieoLXsYjiVOuDNXIRNKoPJcnw
+                          5mILuUiIxR4o+v1R5bgej9N02soUlY8PmwyS7SJqQXH+eTfqlc1ttB5xfaNHl6i8iFLgfqXlyFXG
+                          eUEKMlGjbN4GDD30Hr8ifGsW9RciQ1uHGCbtXOgC3SRys4BZ80htuDYo/Mn28N9F9ihUQp5+b5Q1
+                          xKimJiRLlIKWgK9B7G5CIxW8zcxUEDN61JdVEfKGuE4zWlg2X45afSJECL+3b8hWrVwbpvVZl0kl
+                          dMNlef5AA8s0ikkaNS9rJRVaUD2bkgUgZ8D+YuqoEvYLEeLt1hxqH1TWFCWk+SNrptmIeWzHXtpQ
+                          R7AcLdfiiTLR9BAkZ/yCRC7GPksc0wMegF6cSImhYxOA4b4f8vPMQg5LGkZJV5qC6f46XYll2e1U
+                          Qw3DHBnhIHQIi8XvPPCdBGZxI2HNCPf6wWSX4QTLor6FSgNhOC6bSgIh3iBRUaNZE29bfUPqVLQ5
+                          IQ56zX82WpHCNK5bqlsGvW7tlOfH/3/3SHU27KBwImYCHfyekoGGJDYV2NewtXvEanIGTTneVVRj
+                          JKug51uAB1gwTqMnBRVgFpSp8MX6jDVc/kkNop5GIvRYWhlqdQDhpV2fnM63zCUeL1g9OkaRNzLU
+                          OZCKVrW2JHQoTSCw4XC1tS6bjv3OiAHC+RxuPv736iJZEWfqhI26oUm9nRiVAPktT+RdD7ulKvhf
+                          8BUXAuhlftmYlGbYh5ZN4x2cif3kB8YUQA1LAoRNlzWPdXMD/MDJiQOo9t95ewv2sQgRvOy08L7n
+                          VZQfkUJmb1m29RDwtFv75gbhDdQ2vlnM1hhEsO82Uf7kvQEfnZS1wZdOBaaeYZeHlndSv4LxmrLu
+                          aPdea+Eb4kMsvHbLlUJyT/qwRMrF83TdvNyGmqxRZrNVxFP480shulLAQnk8Ya/ykMfycHYeGIop
+                          nwrBg4dRrUcUurUhbJkr1CtR5xpZEE1d3+JXPSa8kjyWEQsqOgDZvTSenPc2SWvbzsfNgn0s7ubK
+                          i0DJipYN1zDc4aqzPbbfjALfAMofo8G6OqYJgjmspyQuVftSVdMBX1OJ2jBNMDEwDQYJYIZIAWUD
+                          BAIBBQAEIP33mSRUxbr0VA2n8iECz5sFL/cNc9aN6vZ7+s/0M07RBBR4768so/FTMIMqQ6xETq/a
+                          AwOXOQICJxA="  # Replace with actual base64 string
         ANDROID_KEYSTORE_PASSWORD: "Echo1234!"
         ANDROID_KEYSTORE_ALIAS: "upload"
         ANDROID_KEYSTORE_KEY_PASSWORD: "Echo1234!"
@@ -15,7 +62,9 @@ workflows:
       - name: Debug Environment
         script: |
           #!/bin/bash
+          echo "Debugging environment variables:"
           echo "ANDROID_KEYSTORE is set to: ${ANDROID_KEYSTORE:-unset}"
+          echo "Length of ANDROID_KEYSTORE: ${#ANDROID_KEYSTORE}"
           if [ -z "$ANDROID_KEYSTORE" ]; then
             echo "ERROR: ANDROID_KEYSTORE is empty or unset"
             exit 1
@@ -24,6 +73,7 @@ workflows:
       - name: Decode Keystore
         script: |
           echo "$ANDROID_KEYSTORE" | base64 -d > keystore.jks
+          ls -lh keystore.jks  # Verify the file was created
       - name: Get Flutter Dependencies
         script: flutter pub get
       - name: Build Signed APK
