@@ -1,28 +1,20 @@
 workflows:
   android-build:
     name: Android Build
-    max_build_duration: 30
     environment:
-      flutter: stable
-      groups:
-        - android-signing  # Include this ONLY if KEYSTORE_FILE is in this group
+      # No need to redefine vars here if set in UI
     scripts:
+      - name: Debug Environment
+        script: |
+          #!/bin/bash
+          echo "Debugging environment variables:"
+          echo "KEYSTORE_FILE is set to: ${KEYSTORE_FILE:-unset}"
+          echo "Length of KEYSTORE_FILE: ${#KEYSTORE_FILE}"
+          if [ -z "$KEYSTORE_FILE" ]; then
+            echo "ERROR: KEYSTORE_FILE is empty or unset"
+            exit 1
+          fi
+          echo "Variable confirmed, proceeding..."
       - name: Decode Keystore
         script: |
           echo "$KEYSTORE_FILE" | base64 -d > keystore.jks
-      - name: Get Flutter Dependencies
-        script: flutter pub get
-      - name: Build Signed APK
-        script: |
-          flutter build apk --release \
-            --keystore-path keystore.jks \
-            --keystore-password "your_password" \
-            --keystore-key-alias "your_alias" \
-            --keystore-key-password "your_key_password"
-    artifacts:
-      - build/**/outputs/**/*.apk
-      
-    scripts:
-       -name: Debug Keystore Variable
-        script: |
-          echo "KEYSTORE_FILE is set to: ${KEYSTORE_FILE:-unset}"
